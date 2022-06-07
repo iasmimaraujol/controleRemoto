@@ -3,7 +3,7 @@ class controleRemoto implements Controlado{
     private boolean on;
     private boolean tocando;
     public controleRemoto(){
-        this.vol = 50;
+        this.vol = 0;
         this.on = false;
         this.tocando = false;
     }
@@ -33,10 +33,18 @@ class controleRemoto implements Controlado{
 
     
     public void ligar(){
-        this.setLigado(true);
+        if(this.tocando == false && this.on == false){
+            this.setLigado(true);
+            this.setTocando(true);
+            this.vol = 50;
+        }
     }    
     public void desligar(){
-        this.setLigado(false);
+        if(this.tocando == true && this.on == true){
+            this.setLigado(false);
+            this.setTocando(false);
+            this.vol = 0;
+        }
     }
     public void abrirMenu(){
         this.onShow();
@@ -45,21 +53,33 @@ class controleRemoto implements Controlado{
         System.out.println("Desligando...");
     }
     public void maisVolume(){
-        this.setVolume(10);
+        if(this.tocando == true && this.on == true){
+            this.setVolume(10);
+        }
     }
     public void menosVolume(){
-        this.setVolume(-10);
+        if(this.tocando == true && this.on == true && this.vol >= 10){
+            this.setVolume(-10);
+        }
     }
     public void ligarMudo(){
-        this.vol = 0;
+        if(this.tocando == true && this.on == true){
+            this.vol = 0;
+        }
     }
     public void desligarMudo(){
-        this.setVolume(50);
+        if(this.tocando == true && this.on == true && this.vol == 0){
+            this.setVolume(50);
+        }
     }
     public void play(){
-        this.setTocando(true);
+        if(this.tocando == false && this.on == true) {
+            this.setTocando(true);
+        }
     }
     public void pause(){
-        this.setTocando(false);
+        if(this.tocando == true && this.on == true){
+            this.setTocando(false);
+        }
     }
 }
