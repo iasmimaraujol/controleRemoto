@@ -3,6 +3,7 @@ public class main {
         controleRemoto cr = new controleRemoto();
         cr.abrirMenu();
         cr.ligar();
+
         cr.abrirMenu();
 
     }    
