@@ -1,4 +1,4 @@
-class controleRemoto{
+class controleRemoto implements Controlado{
     private int vol;
     private boolean on;
     private boolean tocando;
@@ -29,5 +29,37 @@ class controleRemoto{
     public void onShow(){
         System.out.println("volume do controle " + getVolume() + " e ele se encontra em estado: " + getLigando() + " e esta tocando: " + getTocando());
         System.out.println("--------------------------");
+    }
+
+    
+    public void ligar(){
+        this.setLigado(true);
+    }    
+    public void desligar(){
+        this.setLigado(false);
+    }
+    public void abrirMenu(){
+        this.onShow();
+    }
+    public void fecharMenu(){
+        System.out.println("Desligando...");
+    }
+    public void maisVolume(){
+        this.setVolume(10);
+    }
+    public void menosVolume(){
+        this.setVolume(-10);
+    }
+    public void ligarMudo(){
+        this.vol = 0;
+    }
+    public void desligarMudo(){
+        this.setVolume(50);
+    }
+    public void play(){
+        this.setTocando(true);
+    }
+    public void pause(){
+        this.setTocando(false);
     }
 }
